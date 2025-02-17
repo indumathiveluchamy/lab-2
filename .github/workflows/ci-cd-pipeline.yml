@@ -1,0 +1,20 @@
+name: Simple Echo Workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  echo_job:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Echo Message
+        run: |
+          echo "Hi, I am from COSC 1209 class"
+          echo "Running on ${{ matrix.os }}"
